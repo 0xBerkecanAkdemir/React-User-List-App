@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-function UserList() {
+function UserList({setActiveUserId}) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -12,14 +12,15 @@ function UserList() {
 
   return (
     <div>
-      <h2>Kullanıcılar</h2>
+        
       <hr/>
-      {loading && <div>Yükleniyor...</div>}
+      {loading && <div>Loading...</div>}
       <ul>
         {
-            users.map((user) => (<li className="user-list" key={user.id}>{user.name}</li>))
+            users.map((user) => (<li onClick={() => setActiveUserId(user.id)} className="user-list" key={user.id}>{user.name}</li>))
         }
       </ul>
+      <h3>0xBeki</h3>
     </div>
   );
 }
